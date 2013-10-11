@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "Invalid email address format.", 
+         "code": 10303
+      }
+   }

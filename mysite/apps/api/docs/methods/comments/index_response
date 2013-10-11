@@ -1,0 +1,39 @@
+.. code-block:: js
+
+    {
+       "response": [
+          {
+             "created": "1314599268.0",
+             "created_since": "4 月, 1 週",
+             "target_id": "4e464b8e41b6994f3200001f",
+             "target_type": "review.review",
+             "content": "Hello",
+             "user": {
+                "photo": {
+                   "id": "4e4644e341b6994f32000000",
+                   "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+                },
+                "nickname": "sainteye.x.deatheye",
+                "id": "4e49d08e4aa015a3e1000000"
+             },
+             "id": "4e5b31644aa015958c000006"
+          },
+          {
+             "created": "1317958662.0",
+             "created_since": "3 月",
+             "target_id": "4e8e60f34aa01528df000000",
+             "target_type": "wantto.wantto",
+             "content": "hey",
+             "user": {
+                "photo": {
+                   "id": "4e4644e341b6994f32000000",
+                   "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+                },
+                "nickname": "user234",
+                "id": "4e46434741b6994c70000000"
+             },
+             "id": "4e8e74064aa0152a77000000"
+          }
+       ],
+       "success": true
+    }

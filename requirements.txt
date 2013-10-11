@@ -1,0 +1,8 @@
+pymongo
+https://github.com/gage/djangotoolbox/tarball/toolbox-1.4
+https://github.com/gage/django/tarball/nonrel-1.4
+https://github.com/gage/django-dbindexer/tarball/dbindexer-1.4
+https://github.com/gage/mongodb-engine/blob/mongodb-engine-1.4-beta
+django-imagekit==2.0.2
+PIL
+jinja2

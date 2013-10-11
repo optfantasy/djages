@@ -1,0 +1,20 @@
+.. code-block:: js
+
+    {
+        "response": [{
+            "photo": {
+                "id": "4e5df4304aa015c4ba000004",
+                "thumb": "/media/cache/photos/image50x50/L_1.jpeg"
+            },
+            "nickname": "Eric",
+            "id": "4e46434741b6994c70000000"
+        }, {
+            "photo": {
+                "id": "4e4644e341b6994f32000000",
+                "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+            },
+            "nickname": "sainteye.x.deatheye+123",
+            "id": "4eddd93b4aa01550dd000000"
+        }],
+        "success": true
+    }

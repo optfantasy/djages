@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "Facebook access token invalid or expired.", 
+         "code": 10400
+      }
+   }

@@ -1,0 +1,27 @@
+.. code-block:: js
+   
+    {
+       "response": [
+          {
+             "latitude": 25.0,
+             "photo": {
+                "id": "4ecc920f4aa0153cdc000000",
+                "thumb": "/media/cache/photos/image50x50/4e46434741b6994c70000000_1322029583_p03.jpg"
+             },
+             "id": "4e45f29841b6990b4e000000",
+             "longitude": 121.0,
+             "name": "testrestaurant1"
+          },
+          {
+             "latitude": 25.0,
+             "photo": {
+                "id": "4e464b7641b6994f3200001d",
+                "thumb": "/media/cache/photos/image50x50/1L_1.jpeg"
+             },
+             "id": "4e45f32641b6990b4e000002",
+             "longitude": 121.0,
+             "name": "testrestaurant2"
+          }
+       ],
+       "success": true
+    }

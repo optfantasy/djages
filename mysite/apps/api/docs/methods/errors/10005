@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "Target object does not exist.", 
+         "code": 10005
+      }
+   }

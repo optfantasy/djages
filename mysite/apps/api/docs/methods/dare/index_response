@@ -1,0 +1,51 @@
+.. code-block:: js
+
+
+    {
+       "response": [
+          {
+             "city": {
+                "latitude": 32.927750000000003,
+                "id": "4e89b4ae4aa0151836000039",
+                "longitude": 66.632530000000003,
+                "name": "烏魯茲甘省, 阿富汗"
+             },
+             "spectator_ids": "4e46434741b6994c70000000,4ea0eb704aa0150e1e000000",
+             "yes_no": "yes",
+             "creator": {
+                "photo": {
+                   "id": "4e4644e341b6994f32000000",
+                   "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+                },
+                "nickname": "user234",
+                "id": "4e46434741b6994c70000000"
+             },
+             "title": "New api dare",
+             "yes_cnt": 0,
+             "created": "1324629436.0",
+             "ttu_ef": "ttu",
+             "emails": "gulu@gulu.com,genie@gulu.com",
+             "like_cnt": 0,
+             "challenger": {
+                "photo": {
+                   "id": "4e4644e341b6994f32000000",
+                   "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+                },
+                "nickname": "sainteye.x.deatheye+123",
+                "id": "4eddd93b4aa01550dd000000"
+             },
+             "comment_cnt": 0,
+             "no_cnt": 0,
+             "id": "4ef43dbc4aa0154ef7000004",
+             "place": {
+                 "id": "4ecc8c554aa0153c15000000",
+                 "name": "restaurant"
+              }
+             "ef_cnt": 0,
+             "can_vote": true,
+             "ttu_cnt": 0,
+             "is_like": false
+          }
+       ],
+       "success": true
+    }

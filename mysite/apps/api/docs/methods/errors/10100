@@ -1,0 +1,9 @@
+.. code-block:: js
+
+    {
+       "success": false,
+       "error": {
+          "message": "Authentication required.",
+          "code": 10100
+       }
+    }

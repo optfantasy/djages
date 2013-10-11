@@ -1,0 +1,23 @@
+.. code-block:: js
+
+    {
+       "response": {
+          "username": "user1",
+          "allow_email": true,
+          "create_dare_cnt": 76,
+          "privacy": "public",
+          "photo": {
+             "id": "4e4644e341b6994f32000000",
+             "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+          },
+          "id": "4e46434741b6994c70000000",
+          "wantto_cnt": 41,
+          "email": "eric.lee@geniecapital.com.tw",
+          "metoo_cnt": 15,
+          "social": "weibo,facebook",
+          "pre_dare_cnt": 10,
+          "nickname": "user234",
+          "after_dare_cnt": 1
+       },
+       "success": true
+    }

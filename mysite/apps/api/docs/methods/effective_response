@@ -1,0 +1,8 @@
+.. code-block:: js
+
+    {
+        "response": {
+            "effective": true
+        },
+        "success": true
+    }

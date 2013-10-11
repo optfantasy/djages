@@ -1,0 +1,33 @@
+.. code-block:: js
+
+    {
+       "response": [
+          {
+             "url": "/media/videos/HD_Yoona_SNSD.mp4",
+             "thumb": "/media/videos/thumbnails/HD_Yoona_SNSD.png",
+             "user": {
+                "photo": {
+                   "id": "4e4644e341b6994f32000000",
+                   "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+                },
+                "nickname": "sainteye.x.deatheye",
+                "id": "4e49d08e4aa015a3e1000000"
+             },
+             "id": "4ea133844aa01515b1000004"
+          },
+          {
+             "url": "/media/videos/2010_GI_2.mp4",
+             "thumb": "/media/videos/thumbnails/2010_GI_2.png",
+             "user": {
+                "photo": {
+                   "id": "4e4644e341b6994f32000000",
+                   "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+                },
+                "nickname": "user234",
+                "id": "4e46434741b6994c70000000"
+             },
+             "id": "4ea134274aa01515c7000002"
+          }
+       ],
+       "success": true
+    }

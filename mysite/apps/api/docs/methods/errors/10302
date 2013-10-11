@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "This email address is already in use.", 
+         "code": 10302
+      }
+   }

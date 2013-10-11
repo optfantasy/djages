@@ -1,0 +1,15 @@
+#!/bin/bash
+if [ "$1" == "" ]; then
+    echo >&2 "usage: $0 APPNAME";
+    exit 1;
+fi
+
+mv ./mysite $1
+
+sed -i -e "s/mysite/$1/g" ./manage
+sed -i -e "s/mysite/$1/g" ./$1/configs/common/common.wsgi
+sed -i -e "s/mysite/$1/g" ./$1/configs/common/settings.py
+
+rm ./manage-e
+rm ./$1/configs/common/common.wsgi-e
+rm ./$1/configs/common/settings.py-e

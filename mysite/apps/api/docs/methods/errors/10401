@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "Bad facebook ID/access token combination.", 
+         "code": 10401
+      }
+   }

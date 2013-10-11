@@ -1,0 +1,9 @@
+.. code-block:: js
+
+    {
+       "success": false,
+       "error": {
+          "message": "Not effective operation (already done or not allowed).",
+          "code": 10007
+       }
+    }

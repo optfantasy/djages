@@ -1,0 +1,12 @@
+.. code-block:: js
+   
+   {
+      "response": {
+         "large": "/media/cache/photos/image450x450/81337bcc-3be1-4bfb-a719-21ee48b5726d.jpeg", 
+         "medium": "/media/cache/photos/image160x160/81337bcc-3be1-4bfb-a719-21ee48b5726d.jpeg", 
+         "thumb": "/media/cache/photos/image50x50/81337bcc-3be1-4bfb-a719-21ee48b5726d.jpeg", 
+         "original": "/media/photos/81337bcc-3be1-4bfb-a719-21ee48b5726d.jpeg", 
+         "id": "4ea90b6d02182305e900024c"
+      }, 
+      "success": true
+   }

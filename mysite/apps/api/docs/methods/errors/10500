@@ -1,0 +1,9 @@
+.. code-block:: js
+   
+   {
+      "success": false, 
+      "error": {
+         "message": "Photo exceeds 524288 byte filesize limit.", 
+         "code": 10500
+      }
+   }

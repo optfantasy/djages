@@ -1,0 +1,19 @@
+.. code-block:: js
+   
+    {
+       "response": [
+          {
+             "latitude": 42.463720000000002,
+             "id": "4e89b4ae4aa0151836000000",
+             "longitude": 1.49129,
+             "name": "聖胡利婭-德洛裡亞, 安道爾"
+          },
+          {
+             "latitude": 42.542769999999997,
+             "id": "4e89b4ae4aa0151836000001",
+             "longitude": 1.7336100000000001,
+             "name": "Pas de la Casa, 安道爾"
+          }
+       ],
+       "success": true
+    }

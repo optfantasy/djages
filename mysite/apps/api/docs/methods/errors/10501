@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "Bad photo format.  Accepted formats are (jpeg,png).", 
+         "code": 10501
+      }
+   }

@@ -1,0 +1,9 @@
+.. code-block:: js
+
+    {
+       "success": false,
+       "error": {
+          "message": "The request user is not authorized to access this resource.",
+          "code": 10102
+       }
+    }

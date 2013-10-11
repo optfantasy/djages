@@ -1,0 +1,9 @@
+.. code-block:: js
+   
+   {
+      "success": false,
+      "error": {
+         "message": "Invalid username or password.",
+         "code": 10101
+      }
+   }

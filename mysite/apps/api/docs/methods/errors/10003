@@ -1,0 +1,9 @@
+.. code-block:: js
+   
+   {
+      "success": false, 
+      "error": {
+         "message": "User could not be found.", 
+         "code": 10003
+      }
+   }

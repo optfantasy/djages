@@ -1,0 +1,30 @@
+.. code-block:: js
+
+    {
+       "response": [
+          {
+             "photo": {
+                "id": "4e4644e341b6994f32000000",
+                "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+             },
+             "email": "user1@gulu.com",
+             "is_favorited": false,
+             "gulu_user_id": "4e46434741b6994c70000000",
+             "nickname": "user1",
+             "id": "4e464b2041b6994f3200001a"
+          },
+          {
+             "photo": {
+                "id": "4e4644e341b6994f32000000",
+                "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+             },
+             "email": "",
+             "is_favorited": false,
+             "gulu_user_id": "4e46434741b6994c70000000",
+             "nickname": "nick",
+             "id": "4e49d4324aa01501a0000006"
+          }
+       ],
+       "success": true
+    }
+    

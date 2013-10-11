@@ -1,0 +1,22 @@
+.. code-block:: js
+   
+   {
+      "response": {
+         "targetType": "1", 
+         "createdSince": "0 minutes", 
+         "created": "1318932977.0", 
+         "targetId": "4e9d51f10218231314000493", 
+         "content": "hi mom", 
+         "user": {
+            "photo": {
+               "id": "4e9d51f1021823131400049a", 
+               "thumb": "/media/cache/photos/image50x50/img_user_fallback.png"
+            }, 
+            "nickname": "testuser", 
+            "id": "4e9d51f10218231314000494"
+         }, 
+         "id": "4e9d51f10218231314000498"
+      }, 
+      "success": true
+   }
+   

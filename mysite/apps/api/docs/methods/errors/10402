@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false,
+      "error": {
+         "message": "Expired facebook ID/access token combination. Please ask for token again.",
+         "code": 10402
+      }
+   }

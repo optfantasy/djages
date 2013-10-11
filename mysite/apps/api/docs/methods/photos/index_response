@@ -1,0 +1,15 @@
+.. code-block:: js
+   
+
+    {
+       "response": [
+          {
+             "large": "/media/cache/photos/image450x450/1L_1.jpeg",
+             "medium": "/media/cache/photos/image160x160/1L_1.jpeg",
+             "thumb": "/media/cache/photos/image50x50/1L_1.jpeg",
+             "original": "/media/photos/1L_1.jpeg",
+             "id": "4e45f4b841b6990dcb000005"
+          }
+       ],
+       "success": true
+    }

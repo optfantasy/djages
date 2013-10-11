@@ -1,0 +1,9 @@
+.. code-block:: js
+
+   {
+      "success": false, 
+      "error": {
+         "message": "This username is unavailable.", 
+         "code": 10301
+      }
+   }

@@ -1,0 +1,16 @@
+.. code-block:: js
+
+    {
+       "response": {
+          "photo": {
+             "id": "4ed1d110e710c417a0000000",
+             "thumb": "/media/cache/photos/image50x50/p01_1.jpg"
+          },
+          "email": "saint100@gmail.com",
+          "is_favorited": true,
+          "gulu_user_id": "4ed1d044e710c41793000000",
+          "nickname": "new_user2",
+          "id": "4ef1a2254aa0153c3a000003"
+       },
+       "success": true
+    }
