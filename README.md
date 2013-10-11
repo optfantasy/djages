@@ -41,3 +41,9 @@ $ cd djages
 $ pip install -r requirements.txt
 $ ./manage runserver
 ````
+
+#### Contributor
+* [Gage Tseng](https://github.com/gage/)
+* [Sean Cheng](https://github.com/sainteye/)
+* [Jadon ke](https://github.com/jasonke/)
+* [Redbug](https://github.com/redbug/)
