@@ -43,7 +43,7 @@ $ ./startnewsite YOUR_APP_NAME
 $ ./manage runserver
 ````
 
-#### Contributor
+#### Contributors
 * [Gage Tseng](https://github.com/gage/)
 * [Sean Cheng](https://github.com/sainteye/)
 * [Jadon ke](https://github.com/jasonke/)
