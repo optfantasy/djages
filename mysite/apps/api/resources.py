@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from django.conf import settings
 
-from pymongo.objectid import InvalidId
+from bson.objectid import InvalidId
 from piston.doc import HandlerMethod
 from piston.emitters import Emitter
 from piston.handler import typemapper
