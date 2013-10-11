@@ -39,6 +39,7 @@ $ deactivate
 $ git clone https://github.com/optfantasy/djages
 $ cd djages
 $ pip install -r requirements.txt
+$ ./startnewsite YOUR_APP_NAME
 $ ./manage runserver
 ````
 
