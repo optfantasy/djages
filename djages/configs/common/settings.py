@@ -1,4 +1,4 @@
-# Django settings for mysite project.
+# Django settings for djages project.
 
 import os
 
@@ -18,8 +18,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'dbindexer',
         'TARGET': 'mongodb',
-        'NAME': 'mysite',
-        'TEST_NAME': 'test_mysite',
+        'NAME': 'djages',
+        'TEST_NAME': 'test_djages',
     },
     'mongodb': {
         'ENGINE': 'django_mongodb_engine',
@@ -132,7 +132,7 @@ MIDDLEWARE_CLASSES = (
 AUTHENTICATION_BACKENDS = (
 )
 
-ROOT_URLCONF = 'mysite.configs.common.urls'
+ROOT_URLCONF = 'djages.configs.common.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

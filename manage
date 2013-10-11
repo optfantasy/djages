@@ -1,2 +1,2 @@
 #!/bin/sh
-python ./mysite/configs/${DEPLOYMENT_TARGET:="common"}/manage.py $*
+python ./djages/configs/${DEPLOYMENT_TARGET:="common"}/manage.py $*
