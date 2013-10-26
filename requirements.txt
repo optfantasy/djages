@@ -6,3 +6,4 @@ https://github.com/gage/mongodb-engine/tarball/mongodb-engine-1.4-beta
 django-imagekit==2.0.2
 PIL
 jinja2
+fabric==1.0.1

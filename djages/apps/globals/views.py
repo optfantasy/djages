@@ -8,12 +8,12 @@ from globals.utils import slugreverse
 def home(request):
     """ Global homepage.  Redirects to user's profile page if authenticated, registration-signup
     otherwise. """
+    context = {}
 
     if request.user.is_authenticated():
-        return HttpResponseRedirect(slugreverse(request.user, "user-profile", args=[request.user.id]))
+        # return HttpResponseRedirect(slugreverse(request.user, "user-profile", args=[request.user.id]))
+        return render_to_response("landing.html", context, context_instance=RequestContext(request))
     else:
-        context = {}
-
         return render_to_response("landing.html", context, context_instance=RequestContext(request))
 
 

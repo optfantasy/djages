@@ -52,6 +52,7 @@ class GlobalBaseHandler(BaseHandler):
     default_order = None
     read_auth_exempt = False
     create_auth_exempt = False
+    superuser_only = False
 
     def __init__(self):
         if not self.create_kwargs:

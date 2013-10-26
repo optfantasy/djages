@@ -43,6 +43,11 @@ $ ./startnewsite YOUR_APP_NAME
 $ ./manage runserver
 ````
 
+#### Create Superuser
+````bash
+$ ./manage createsuperuser
+````
+
 #### Contributors
 * [Gage Tseng](https://github.com/gage/)
 * [Sean Cheng](https://github.com/sainteye/)

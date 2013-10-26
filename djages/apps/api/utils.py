@@ -9,29 +9,10 @@ from django.http import QueryDict
 import api.errors as api_errors
 from api.errors import GlobalAPIException
 
-# New api django_ct
-TYPE_LIST = ['Unknown', 'auth.user', ]
-
-
-EARTH_RADIUS = 6378.0 #km
-
-APP_LIST = ('wantto', 'dare')
 
 TOKEN_LENGTH = 20
 DEFAULT_RETURN_NUM = 20
 MAX_RETURN_NUM = 300
-
-
-def get_target_object(target_type, target_id):
-    django_ct = target_type
-
-    if django_ct not in TYPE_LIST:
-        raise GlobalAPIException(api_errors.ERROR_GENERAL_BAD_TYPE, 'Content Type Not Found for %s'% target_type)
-
-    django_ct_args = django_ct.split('.')
-    klass = get_model(*django_ct_args)
-    target = klass.objects.get(id=target_id)
-    return target
 
 
 def to_json(obj, **kwargs):
@@ -48,7 +29,7 @@ def process_timestamp(query_dict, process_fields=[]):
         raise GlobalAPIException(api_errors.ERROR_GENERAL_BAD_PARA_FORMAT, 'Not valid timestamp format.')
 
 
-def process_latlon(latlon):
+def process_latlon(latlon, reverse=False):
     if not latlon:
         raise GlobalAPIException(api_errors.ERROR_GENERAL_BAD_SIGNATURE, 'Location information is missing.')
 
@@ -67,7 +48,7 @@ def process_latlon(latlon):
     if -180>longitude or longitude>180:
         raise GlobalAPIException(api_errors.ERROR_GENERAL_BAD_PARA_FORMAT, 'longitude is out of range. It should be in [-180,180], and it is %s.'% longitude)
 
-    return (latitude, longitude)
+    return (latitude, longitude) if not reverse else (longitude, latitude)
 
 
 def process_boolean(query_dict, process_fields=[]):
@@ -147,12 +128,14 @@ def process_request(cls, request, *args, **kwargs):
         elif request.method=='POST' and cls.create_auth_exempt:
             pass
         elif user_in_session:
-#            print "user_in_session: %s" % user_in_session
-#            print "request.user: %s" % request.user
             if hasattr(request, 'user'):
                 request.user = user_in_session
         else:
             raise GlobalAPIException(api_errors.ERROR_AUTH_NOT_AUTHENTICATED)
+
+    # Check of super user
+    if cls.superuser_only and not request.user.is_superuser:
+        raise GlobalAPIException(api_errors.ERROR_AUTH_NOT_AUTHENTICATED)
 
     # Check authorized
 

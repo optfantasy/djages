@@ -129,8 +129,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ### Authentication
-AUTHENTICATION_BACKENDS = (
-)
+# AUTHENTICATION_BACKENDS = (
+# )
 
 ROOT_URLCONF = 'djages.configs.common.urls'
 
@@ -145,7 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
