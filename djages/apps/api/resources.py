@@ -47,7 +47,7 @@ def make_error_response(code, debug=None):
 
 CHALLENGE = object()
 
-class GuluResource(Resource):
+class GlobalResource(Resource):
     
     @vary_on_headers('Authorization')
     def __call__(self, request, *args, **kwargs):
