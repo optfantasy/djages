@@ -1,4 +1,4 @@
-### Djages - Django + Mongodb + RESTful API
+### Djages = Django + Mongodb + RESTful API
 Djages is an app base on [django-nonrel](https://github.com/django-nonrel/django) and [mongodb-engine](https://github.com/django-nonrel/mongodb-engine). You can easily create a web app with power of Django, Mongodb and a RESTful API framework.
 
 #### Requirement
