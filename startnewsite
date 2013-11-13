@@ -1,15 +1,29 @@
 #!/bin/bash
 if [ "$1" == "" ]; then
-    echo >&2 "usage: $0 APPNAME";
+    echo >&2 "usage: $0 APP_NAME";
     exit 1;
 fi
 
+project_name=$1
+
+do_sed(){
+    local file_name=$1
+    local e_file_name=$file_name"-e"
+    sed -i -e "s/djages/$project_name/g" $file_name
+    if [ -f $e_file_name ];
+    then
+        rm $e_file_name
+    fi
+}
+
 mv ./djages $1
 
-sed -i -e "s/djages/$1/g" ./manage
-sed -i -e "s/djages/$1/g" ./$1/configs/common/common.wsgi
-sed -i -e "s/djages/$1/g" ./$1/configs/common/settings.py
-
-rm ./manage-e
-rm ./$1/configs/common/common.wsgi-e
-rm ./$1/configs/common/settings.py-e
+do_sed ./manage
+do_sed ./fabfile.py
+do_sed ./$1/configs/common/common.wsgi
+do_sed ./$1/configs/common/settings.py
+do_sed ./$1/configs/staging/apache
+do_sed ./$1/configs/staging/nginx
+do_sed ./$1/configs/staging/staging.wsgi
+do_sed ./$1/configs/staging/settings.py
+do_sed ./$1/scripts/deploy.sh

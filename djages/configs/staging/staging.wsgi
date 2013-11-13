@@ -32,7 +32,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../.
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../ext")))
 
-os.environ["DJANGO_SETTINGS_MODULE"] = "foodblogs.configs.staging.settings"
+os.environ["DJANGO_SETTINGS_MODULE"] = "djages.configs.staging.settings"
 
 from django.core.handlers.wsgi import WSGIHandler
 _application = WSGIHandler()

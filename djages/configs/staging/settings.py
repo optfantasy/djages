@@ -1,4 +1,4 @@
-from foodblogs.configs.common.settings import *
+from djages.configs.common.settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -22,14 +22,14 @@ DATABASES = {
     'default': {
     	'ENGINE': 'dbindexer',
     	'TARGET': 'mongodb',
-        'NAME': 'foodblogs',
-        'TEST_NAME': 'test_foodblogs',
+        'NAME': 'djages',
+        'TEST_NAME': 'test_djages',
         'HOST': 'localhost',
     },
     'mongodb': {
     	'ENGINE': 'django_mongodb_engine',
-    	'NAME': 'foodblogs',
-    	'TEST_NAME': 'test_foodblogs',
+    	'NAME': 'djages',
+    	'TEST_NAME': 'test_djages',
         'HOST': 'localhost',
     },
 }

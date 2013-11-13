@@ -11,6 +11,18 @@ fi
 WEBIP=YOUR_SERVER_IP_OR_DOAMIN
 MONGOIP=MONGO_DB_IP
 
+if [ "$WEBIP" == "YOUR_SERVER_IP_OR_DOAMIN" ] || [ "$MONGOIP" == "MONGO_DB_IP" ]; then
+    echo "Please specified your server ip and mongodb ip in deploy file."
+    exit
+fi
+
+if [ "$1" == "init" ]; then
+    username=$2
+    key_path=$3
+    fab -f fabfile.py setup:ip=$WEBIP,username=$username ubuntu_init:public_key_path=$key_path
+    exit 0
+fi
+
 while [ $# -gt 0 ]
 do
     case "$1" in

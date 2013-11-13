@@ -14,7 +14,8 @@ Base configuration
 env.project_name = 'djages'
 env.path = '/home/djages/site/%(project_name)s' % env
 env.repo_path = '%(path)s/repository' % env
-evn.repo_url = ''
+env.env_path = '%(path)s/env' % env
+env.repo_url = 'https://github.com/optfantasy/djages'
 
 """
 Environments
@@ -30,7 +31,7 @@ def staging(web_ip, mongo_ips):
     env.hosts = ['%s:22' % web_ip]
     env.user = 'djages'
 
-def setup(ip, username, password=None, port=22)
+def setup(ip, username, password=None, port=22):
     env.hosts = ['%s:%s' % (ip, port)]
     env.user = username
     if password:
@@ -63,34 +64,58 @@ def checkout_latest():
 Commands - setup
 """
 
-def new_user(username, password):   
-    
-    runcmd('adduser {username} --disabled-password --gecos ""'.format(
-        username=username))
-    runcmd('adduser {username} sudo'.format(
-        username=username))
-    
-    runcmd('echo "{username}:{password}" | chpasswd'.format(
-        username=username,
-        password=password))
+def new_user(username, public_key_path):
+
+    if not exists('/home/%s' % username):
+
+        run('sudo adduser {username} --disabled-password --gecos ""'.format(
+            username=username))
+        run('sudo adduser {username} sudo'.format(
+            username=username))
+
+        f = file(public_key_path)
+        key = f.read()
+
+        if not exists('/home/%s/.ssh' % username):
+            run('sudo mkdir -p /home/%s/.ssh' % username)
+            run('sudo chown -R %(name)s:%(name)s /home/%(name)s/.ssh' % {'name':username})
+
+            run('echo "%s" | sudo tee -a /home/%s/.ssh/authorized_keys' % (key, username))
+            run('sudo chown %(name)s:%(name)s /home/%(name)s/.ssh/authorized_keys' % {'name':username})
+            run('sudo chmod 600 /home/%(name)s/.ssh/authorized_keys' % {'name':username})
+        f.close()
+
 
 def install_packages():
-    command = 'apt-get install python-software-properties python g++ make git python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2'
-    runcmd(command)
+    command = 'sudo apt-get update;sudo apt-get install python-software-properties python g++ make git python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2'
+    run(command)
 
-def create_env(user):
-    sudo('mkdir -p %(repo_path)s' % env)
+def create_env():
+    if not exists('%(path)s' % env):
+        run('sudo mkdir -p %(path)s' % env)
+        run('sudo chown -R %(project_name)s:%(project_name)s /home/%(project_name)s/site' % env)
 
+def create_repo():
+    env.user = env.project_name
+    if not exists('%(repo_path)s' % env):
+        with prefix('cd %(path)s' % env):
+            run('git clone %s repository' % env.repo_url)
+
+def setup_vitrualenv():
+    env.user = env.project_name
+    if not exists('%(env_path)s' % env):
+        with prefix('cd %(path)s' % env):
+            run('virtualenv env' % env)
     with prefix('cd %(repo_path)s' % env):
-        run('git clone %(repo_url)s' % env)
+        with prefix('source %(env_path)s/bin/activate' % env):
+            run('pip install -r requirements.txt')
 
-    sudo('chown %s:%s %s' % (user, user, env.repo_path))
-
-
-def ubuntu_init(new_username, new_password):
+def ubuntu_init(public_key_path):
     install_packages()
-    new_user(new_username, new_password)
-    create_env(new_username)
+    new_user(env.project_name, public_key_path)
+    create_env()
+    create_repo()
+    setup_vitrualenv()
 
 """
 Commands - deployment

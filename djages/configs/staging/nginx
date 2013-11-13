@@ -6,8 +6,8 @@ server {
     listen   80;
     server_name web_ip;
 
-    access_log /home/foodblogs/logs/nginx.access.log;
-    error_log /home/foodblogs/logs/nginx.error.log;
+    access_log /home/djages/logs/nginx.access.log;
+    error_log /home/djages/logs/nginx.error.log;
 
     location / {
         proxy_pass  http://app;
