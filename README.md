@@ -48,6 +48,31 @@ $ ./manage runserver
 $ ./manage createsuperuser
 ````
 
+#### Deploy to Ubuntu Server
+Suppose you have an ubuntu server with IP/domain example.com.
+
+1) Edit file "deploy": change YOUR_SERVER_IP_OR_DOAMIN to "example.com" and MONGO_DB_IP to "localhost".
+
+2) [Generate a SSH key pair](https://help.github.com/articles/generating-ssh-keys) for your remote user. Remember the public key path, it will be used in next step.
+
+3) Initialize site environment by given a username who has sudo permission and file path of public key.
+````bash
+$ ./deploy init USER_WITH_SUDO_PERMISSION PATH_OF_PUBLIC_KEY
+````
+
+If your server is in AWS ("ubuntu" is the user who has sudo permission), the initialize command will be like this:
+````bash
+$ ./deploy init ubuntu ~/.ssh/id_rsa.pub
+````
+
+Now, you can deploy your cade to your ubuntu server.
+````bash
+$ ./deploy
+````
+
+Check if deploying success, go to your IP/domain http://example.com.
+
+
 #### Contributors
 * [Gage Tseng](https://github.com/gage/)
 * [Sean Cheng](https://github.com/sainteye/)
