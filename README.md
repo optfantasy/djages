@@ -70,7 +70,8 @@ Now, you can deploy your cade to your ubuntu server.
 $ ./deploy
 ````
 
-Check if deploying success, go to your IP/domain http://example.com.
+Go to your IP/domain : http://example.com to check if it works.
+(Don't forget to open 80 port in your security group if you are using AWS)
 
 
 #### Contributors
