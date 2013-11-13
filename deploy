@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [ "$1" == "" ] && [ "$2" == "" ] && [ "$3" == "" ] && [ "$4" == "" ]; then
+   ./deploy -s staging -b master
+   exit
+   # echo >&2 "usage: $0 -s (dev or staging) -b branch [-a]";
+   # echo "example: ./deploy -s demo -b dev"
+   # exit 1;
+fi
+
+WEBIP=YOUR_SERVER_IP_OR_DOAMIN
+MONGOIP=MONGO_DB_IP
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+        -s) server=$2;
+            shift;
+            if [ "$server" != "staging" ]; then
+                echo >&2 "use '-s demo'"
+                exit 1;
+            fi;;
+        -b) branch=$2;
+            shift;
+            if [ "$branch" == "" ]; then
+                echo >&2 "use '-b branch_name'"
+                exit 1;
+            fi;;
+        -u) user=$2; shift;;
+        -a) all=1; shift;;
+        -*) echo >&2 "usage: $0 -s (dev or staging) -b branch [-a]";
+            exit 1;;
+        *)  break;;
+    esac
+    shift
+done
+
+if [ $server == "staging" ]; then
+    fab -f fabfile.py staging:web_ip=$WEBIP,mongo_ips=$MONGOIP branch:$branch deploy_staging
+fi

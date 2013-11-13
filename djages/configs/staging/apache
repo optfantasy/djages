@@ -1,0 +1,43 @@
+<VirtualHost *:8080>
+    ServerName 127.0.0.1
+
+    WSGIScriptAlias / /home/djages/site/djages/repository/djages/configs/staging/staging.wsgi
+ 
+    ErrorLog /home/djages/logs/apache.error.log
+    LogLevel warn
+
+    CustomLog /home/djages/logs/apache.access.log combined
+    
+    ServerSignature Off
+</VirtualHost>
+
+<VirtualHost *:8081>
+    ServerName 127.0.0.1
+
+    Alias /media/ "/home/djages/site/djages/repository/djages/media/"
+    <Directory "/home/djages/site/djages/repository/djages/media/">
+        Options MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+        Header unset ETag
+        FileETag None
+        ExpiresActive on
+        ExpiresDefault "access plus 1 week"
+    </Directory>
+    
+    Alias /static/ "/home/djages/site/djages/repository/djages/static/"
+    <Directory "/home/djages/site/djages/repository/djages/static/">
+        Options MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+        Header unset ETag
+        FileETag None
+        ExpiresActive on
+        ExpiresDefault "access plus 1 week"
+    </Directory>
+</VirtualHost>
+

@@ -1,0 +1,26 @@
+upstream app {
+    server 127.0.0.1:8080;
+}
+
+server {
+    listen   80;
+    server_name web_ip;
+
+    access_log /home/foodblogs/logs/nginx.access.log;
+    error_log /home/foodblogs/logs/nginx.error.log;
+
+    location / {
+        proxy_pass  http://app;
+        client_max_body_size        20M;
+        proxy_read_timeout 600;
+    }
+
+    location  /media/ {
+        proxy_pass  http://127.0.0.1:8081;
+    }
+    
+    location  /static/ {
+        proxy_pass  http://127.0.0.1:8081;
+    }
+}
+
