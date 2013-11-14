@@ -31,7 +31,7 @@ def staging(web_ip, mongo_ips):
     env.hosts = ['%s:22' % web_ip]
     env.user = 'djages'
 
-def setup(ip, username, password=None, port=22):
+def setup(ip, username='ubuntu', password=None, port=22):
     env.hosts = ['%s:%s' % (ip, port)]
     env.user = username
     if password:
