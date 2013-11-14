@@ -7,7 +7,7 @@ On Mac, you can follow this [post](http://www.thisisthegreenroom.com/2011/instal
 On Ubuntu, you can just do
 
 ````bash
-$ sudo apt-get install python-software-properties python g++ make git python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2 libapache2-mod-wsgi
+$ sudo apt-get install python-software-properties python g++ make python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2 libapache2-mod-wsgi
 ````
 
 Create a virtual enviroment for Djages.
