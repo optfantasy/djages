@@ -23,6 +23,11 @@ if [ "$1" == "init" ]; then
     exit 0
 fi
 
+if [ "$1" == "createsuperuser" ]; then
+    fab -f fabfile.py setup:ip=$WEBIP create_super_user
+    exit 0
+fi
+
 while [ $# -gt 0 ]
 do
     case "$1" in
