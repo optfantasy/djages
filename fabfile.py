@@ -141,6 +141,12 @@ def ubuntu_init(public_key_path):
     create_repo()
     setup_vitrualenv()
 
+def create_super_user():
+    env.user = env.project_name
+    with prefix('cd %(repo_path)s/%(project_name)s/configs/staging' % env):
+        with prefix('source %(env_path)s/bin/activate' % env):
+            run('python ./manage.py createsuperuser')
+
 """
 Commands - deployment
 """
