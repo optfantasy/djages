@@ -7,7 +7,7 @@ On Mac, you can follow this [post](http://www.thisisthegreenroom.com/2011/instal
 On Ubuntu, you can just do
 
 ````bash
-$ sudo apt-get install python-software-properties python g++ make git python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2
+$ sudo apt-get install python-software-properties python g++ make python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2 libapache2-mod-wsgi
 ````
 
 Create a virtual enviroment for Djages.
@@ -70,7 +70,8 @@ Now, you can deploy your cade to your ubuntu server.
 $ ./deploy
 ````
 
-Check if deploying success, go to your IP/domain http://example.com.
+Go to your IP/domain : http://example.com to check if it works.
+(Don't forget to open 80 port in your security group if you are using AWS)
 
 
 #### Contributors
