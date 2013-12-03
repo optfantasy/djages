@@ -3,7 +3,7 @@ Djages is an app base on [django-nonrel](https://github.com/django-nonrel/django
 
 #### Requirement
 For Djages, all you need is python and a virtual environment. 
-On Mac, you can follow this [post](http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/#python).
+On Mac, you can follow this [post](http://darklaunch.com/2011/11/24/osx-install-pip-virtualenv-virtualenvwrapper-on-mac).
 On Ubuntu, you can just do
 
 ````bash
