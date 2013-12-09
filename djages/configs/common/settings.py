@@ -103,7 +103,7 @@ TEMPLATE_LOADERS = (
 
 import jinja2
 JINJA2_ENVIRONMENT_OPTIONS = {
-    'bytecode_cache': jinja2.FileSystemBytecodeCache(os.path.join(SITE_ROOT, 'configs/common/jinja_cache'), '%s.cache')
+    # 'bytecode_cache': jinja2.FileSystemBytecodeCache(os.path.join(SITE_ROOT, 'configs/common/jinja_cache'), '%s.cache')
 }
 
 JINJA2_TEMPLATE_LOADERS = (
