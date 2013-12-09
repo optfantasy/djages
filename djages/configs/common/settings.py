@@ -23,8 +23,8 @@ DATABASES = {
     },
     'mongodb': {
         'ENGINE': 'django_mongodb_engine',
-        'NAME': 'django_mongodb_base',
-        'TEST_NAME': 'test_django_mongodb_base',
+        'NAME': 'djages',
+        'TEST_NAME': 'test_djages',
     },
 }
 
@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'coffin',
 
     'globals',
+    'user_profiles',
     'api',
 )
 
