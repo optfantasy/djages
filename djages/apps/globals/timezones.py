@@ -1,5 +1,4 @@
 import datetime
-import pytz
 
 from django.utils.translation import ugettext_lazy as _
 

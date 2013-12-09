@@ -34,3 +34,7 @@ log.pypylog
 Thumbs.db
 .tm_properties
 
+
+# cache #
+#########
+jinja_cache

@@ -1,24 +1,11 @@
+""" Site photos photospecs """
+
+#from imagekit.specs import ImageSpec
+#from imagekit import processors
 import ImageEnhance
 from PIL import ImageOps
 from imagekit.models import ImageSpecField
 from imagekit import processors
-
-class LinkImgResize(object):
-    def __init__(self, width, height):
-        """
-        :param width: The target width, in pixels.
-        :param height: The target height, in pixels.
-
-        """
-        self.width, self.height = width, height
-
-    def process(self, img):
-        w, h = img.size
-        if w < 98 and h < 98:
-            return processors.ResizeCanvas(width=self.width, height=self.height, anchor=processors.Anchor.CENTER).process(img)
-        else:
-            return processors.SmartResize(width=self.width, height=self.height).process(img)
-
 
 class Sepia(object):
     """
@@ -43,62 +30,6 @@ class Sepia(object):
         img.putpalette(sepia)
         img = img.convert('RGB')
         return img
-
-class Original32x32(ImageSpecField):
-    def __init__(self):
-        super(Original32x32, self).__init__(
-            processors=[
-                processors.ResizeToFit(width=32,height=32),
-                processors.ResizeCanvas(width=32,height=32, anchor=processors.Anchor.CENTER),
-            ],
-            image_field='image'
-        )
-
-class Original64x64(ImageSpecField):
-    def __init__(self):
-        super(Original64x64, self).__init__(
-            processors=[
-                processors.ResizeToFit(width=64,height=64),
-                processors.ResizeCanvas(width=64,height=64, anchor=processors.Anchor.CENTER),
-            ],
-            image_field='image'
-        )
-
-class Original86x86(ImageSpecField):
-    def __init__(self):
-        super(Original86x86, self).__init__(
-            processors=[
-                processors.ResizeToFit(width=86,height=86),
-                processors.ResizeCanvas(width=86,height=86, anchor=processors.Anchor.CENTER),
-            ],
-            image_field='image'
-        )
-
-class Original128x128(ImageSpecField):
-    def __init__(self):
-        super(Original128x128, self).__init__(
-            processors=[
-                processors.ResizeToFit(width=128,height=128),
-                processors.ResizeCanvas(width=128,height=128, anchor=processors.Anchor.CENTER),
-            ],
-            image_field='image'
-        )
-
-class Original150x150(ImageSpecField):
-    def __init__(self):
-        super(Original150x150, self).__init__(
-            processors=[
-                processors.ResizeToFit(width=150,height=150),
-                processors.ResizeCanvas(width=150,height=150, anchor=processors.Anchor.CENTER),
-            ],
-            image_field='image'
-        )
-
-class Original(ImageSpecField):
-    def __init__(self):
-        super(Original, self).__init__(
-            image_field='image'
-        )
 
 class ImageJpeg(ImageSpecField):
     def __init__(self):
@@ -252,17 +183,6 @@ class Image98x98(ImageSpecField):
             format='JPEG'
         )
 
-class ImageFitBox98x98(ImageSpecField):
-    def __init__(self):
-        super(ImageFitBox98x98, self).__init__(
-            processors=[
-                LinkImgResize(width=98,height=98),
-            ],
-            image_field='image',
-            options={'quality': 95, 'optimize':True},
-            format='JPEG'
-        )
-
 class Image105x105(ImageSpecField):
     def __init__(self):
         super(Image105x105, self).__init__(
@@ -271,14 +191,7 @@ class Image105x105(ImageSpecField):
             options={'quality': 95, 'optimize':True},
             format='JPEG'
         )
-class Image108x168(ImageSpecField):
-    def __init__(self):
-        super(Image108x168, self).__init__(
-            processors=[processors.ResizeToFill(width=108,height=168,anchor=processors.Anchor.CENTER)], 
-            image_field='image',
-            options={'quality': 95, 'optimize':True},
-            format='JPEG'
-        )
+
 class Image120x177(ImageSpecField):
     def __init__(self):
         super(Image120x177, self).__init__(
@@ -378,16 +291,6 @@ class Image256x256(ImageSpecField):
             format='JPEG'
         )
 
-
-class ImageFit200x200(ImageSpecField):
-    def __init__(self):
-        super(ImageFit200x200, self).__init__(
-            processors=[processors.ResizeToFit(width=200,height=200)],
-            image_field='image',
-            options={'quality': 95, 'optimize':True},
-            format='JPEG'
-        )
-
 class Image307x307(ImageSpecField):
     def __init__(self):
         super(Image307x307, self).__init__(
@@ -431,36 +334,4 @@ class Image480xAny(ImageSpecField):
             image_field='image',
             options={'quality': 95, 'optimize':True},
             format='JPEG'
-        )
-class SmartOrientationResize(object):
-    def __init__(self, width, height):
-        """
-        :param width: The target width, in pixels.
-        :param height: The target height, in pixels.
-
-        """
-        self.width, self.height = width, height
-
-    def process(self, img):
-        w, h = img.size
-        if self.width > self.height:
-            if w > h:
-                return processors.ResizeToFit(height=self.height).process(img)
-            else:
-                return processors.ResizeToFit(width=self.height).process(img)
-        else:
-            if w > h:
-                return processors.ResizeToFit(height=self.width).process(img)
-            else:
-                return processors.ResizeToFit(width=self.width).process(img)
-
-class ImageFit640x960(ImageSpecField):
-    def __init__(self):
-        super(ImageFit640x960, self).__init__(
-            processors=[SmartOrientationResize(width=640,height=960)],
-            image_field='image',
-            options={'quality': 95, 'optimize':True},
-            format='JPEG'
-        )
-
-
+        )  

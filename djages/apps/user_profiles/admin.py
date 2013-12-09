@@ -4,36 +4,21 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User, Group
 from django import forms
 from django.conf import settings
-from user_profiles.models import UserProfile, BindingPhone
-# from registration.models import Registration
-from slug.models import Slug
+from user_profiles.models import UserProfile
+from imagekit.admin import AdminThumbnail
 
-# def delete_regristration_and_user(modeladmin, request, queryset):
-# 	for up in queryset:
-# 		user = up.user
-# 		Registration.objects.filter(user=user).delete()
-# 		Slug.objects.filter(object_id=user.id).delete()
-# 		up.delete()
-# 		user.delete()
-# delete_regristration_and_user.short_description = "Delete user_profile, registration, and user object."
 
 class UserProfileAdmin(admin.ModelAdmin):
-	list_display = ('user', 'full_name', 'get_setting', 'other_emails', 'current_lang')
-	raw_id_fields = ('user', 'main_profile_pic', 'slug')
-	search_fields = ['username', 'phone_sms', 'phone_sms_e164']
+	list_display = ('user', 'full_name', 'admin_thumbnail')
+	raw_id_fields = ('user',)
+	search_fields = ['username']
+	readonly_fields = ('_img_info', )
 	list_per_page = 100
+	admin_thumbnail = AdminThumbnail(image_field='i50')
 	# actions = [delete_regristration_and_user, ]
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
-
-class BindingPhoneAdmin(admin.ModelAdmin):
-	list_display = ('user', 'phone_sms_e164', 'code', '_codes', 'valid', 'created', )
-	raw_id_fields = ('user', )
-	search_fields = ['phone_sms_e164']
-	list_per_page = 100
-
-admin.site.register(BindingPhone, BindingPhoneAdmin)
 
 
 class UserForm(forms.ModelForm):
@@ -48,9 +33,28 @@ class CustomUserAdmin(UserAdmin):
 	list_filter = ()
 	ordering = ('-date_joined', )
 	search_fields = ('username', 'email')
-	list_display = ('username', 'is_active', 'is_staff', 'email', 'first_name', 'last_name', 'last_login', 'date_joined', 'get_pin_code')
+	list_display = ('username', 'is_active', 'is_staff', 'email', 'first_name', 'last_name', 'last_login', 'date_joined')
+
+	# Override the original bulk delete to ensure the system is working correctly.
+	actions=['really_delete_selected']
 	
+	def get_actions(self, request):
+	    actions = super(CustomUserAdmin, self).get_actions(request)
+	    del actions['delete_selected']
+	    return actions
+	    
+	def really_delete_selected(self, request, queryset):
+	    for obj in queryset:
+	        obj.delete()
+
+	    if queryset.count() == 1:
+	        message_bit = "1 user was"
+	    else:
+	        message_bit = "%s user entries were" % queryset.count()
+	    self.message_user(request, "%s successfully deleted." % message_bit)
+	really_delete_selected.short_description = "Delete selected entries"
+
+
 admin.site.unregister(User)
-#admin.site.unregister(Group)
 admin.site.register(User, CustomUserAdmin)
 

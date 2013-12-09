@@ -11,34 +11,62 @@ from django.db.models.signals import pre_delete
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 from globals.contrib import MongoDBManager
+from globals.utils import get_upload_path_fun
+from globals.timezones import TIMEZONE_CHOICES
+from photos.imagespecs import Image50x50, ImageSpecField
+from photos.models import BaseImageModel, imagespecfilter
 
 from djangotoolbox.fields import ListField, DictField, SetField, EmbeddedModelField
 from imagekit.lib import Image
-
-from django.core.urlresolvers import reverse
-
-from globals.timezones import TIMEZONE_CHOICES
-from photos.models import Photo
 
 
 class UserProfileManager(MongoDBManager):
 
     def get_anonymous(self):
         anonymous = User.objects.get(username='AnonymousUser')
-        return anonymous   
+        return anonymous
+
+    def create_user_profile(self, user):
+        # Already exists, return
+        if self.filter(user=user).exists():
+            return user.get_profile(), False
+        
+        up = self.create(user=user)
+        anonymous = User.objects.get(username='AnonymousUser')
+
+        if user.id == anonymous.id:
+            user_fallback = '%s/images/%s' % (settings.GLOBALS_STATIC_ROOT, 'img_user_fallback.png')
+            image = Image.open(user_fallback)
+            image.verify()
+            fp = open(user_fallback,'r')
+            target_file = File(fp)
+            name = 'img_user_fallback.png'
+            up.image.save(name, target_file, save=True)
+            fp.close()
+            up.save()
+        else:
+            up.image = anonymous.get_profile().image
+            up.save()
+
+        return user.get_profile(), True
     
 
-class UserProfile(models.Model):
-
+class UserProfile(BaseImageModel):
     user = models.ForeignKey(User, related_name="userprofile")
-    image = models.ImageField(upload_to=get_upload_path_fun('userprofile'))
+    # image = models.ImageField(upload_to=get_upload_path_fun('userprofile'))
     full_name = models.CharField(max_length=60, null=True, blank=True)
     timezone = models.CharField(max_length=100, choices=TIMEZONE_CHOICES, default="Asia/Taipei")
 
     # Collection: Basics
     user_agent = models.TextField(null=True, blank=True) # from HTTP header
+    
+    # Images
+    i50        = Image50x50()
+    image      = models.ImageField(upload_to=get_upload_path_fun('userprofile'))
+    img_list   = [k for (k, v) in locals().items() if imagespecfilter(v, ImageSpecField)]
 
     objects = UserProfileManager()
     
@@ -50,6 +78,10 @@ class UserProfile(models.Model):
             return self.accept_language.split(',')[0]
         else:
             return 'en'
+
+    def use_default_img(self):
+        anonymous = self.__class__.objects.get_anonymous()
+        return self.image.path == anonymous.get_profile().image.path
 
     def get_full_name(self):
         if self.full_name:
@@ -67,9 +99,9 @@ class UserProfile(models.Model):
             return self.user.username
             
     def get_display_photo(self):
-        return self.i125
+        return self.i50
     
-    def get_display_photo_url(self, size='i125'):
+    def get_display_photo_url(self, size='i50'):
         return getattr(self, size).url
     
     def username(self):
@@ -77,7 +109,6 @@ class UserProfile(models.Model):
 
     def email(self):
         return self.user.email
-    
     
     def to_json(self, request=None, detail=False, simple=False, **kwargs):
         rtn = {
@@ -94,20 +125,15 @@ class UserProfile(models.Model):
 def create_profile(sender, **kwargs):
     user = kwargs['instance']
     if kwargs['created'] == True:
-        up = UserProfile.objects.create(user=user)
-        user_fallback = '%s/images/%s' % (settings.GLOBALS_STATIC_ROOT, 'img_user_fallback.png')
-        image.verify()
-        fp = open(user_fallback,'r')
-        target_file = File(fp)
-        name = 'img_user_fallback.png'
-        up.image.save(name, target_file, save=True)
-        fp.close()
+        UserProfile.objects.create_user_profile(user=user)
 
 post_save.connect(create_profile, sender=User)
 
 def on_delete_user(sender, **kwargs):
     user = kwargs['instance']
-    UserProfile.objects.filter(user=user).delete()
+    if UserProfile.objects.filter(user=user).exists():
+        up = user.get_profile()
+        up.delete()
     
 pre_delete.connect(on_delete_user, sender=User)
 
