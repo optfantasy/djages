@@ -10,6 +10,13 @@ On Ubuntu, you can just do
 $ sudo apt-get install python-software-properties python g++ git make python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2 libapache2-mod-wsgi libgraphicsmagick++-dev
 ````
 
+For PIL in ubuntu, you may need to do this.
+````bash
+# ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
+# ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
+# ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
+````
+
 Create a virtual enviroment for Djages.
 
 ````bash
@@ -34,7 +41,7 @@ to deactivate virtualenv
 $ deactivate
 ````
 
-#### Get Start
+#### Getting Start
 ````bash
 $ git clone https://github.com/optfantasy/djages
 $ cd djages
