@@ -131,6 +131,7 @@ def create_repo():
     if not exists('%(repo_path)s/%(project_name)s/media' % env):
         run('mkdir -p %(repo_path)s/%(project_name)s/media' % env)
     run('sudo chown -R www-data:www-data %(repo_path)s/%(project_name)s/media' % env)
+    run('sudo chown %(project_name)s:%(project_name)s %(repo_path)s/%(project_name)s/media/.gitignore' % env)
 
 
 def setup_vitrualenv():

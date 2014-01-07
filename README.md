@@ -124,6 +124,21 @@ $ ./deploy init root ~/.ssh/YOUR_APP_NAME.pem.pub
 ````
 
 #### Deploy to Ubuntu Server -- Deploy Project
+Login to remote server
+````bash
+$ ssh YOUR_APP_NAME@YOUR_SERVER_IP_OR_DOAMIN
+````
+and edit .git/config from
+````bash
+url = https://git_user@github.com/example/repository
+````
+to
+````bash
+url = git@github.com:example/repository.git
+````
+and [add ssh key](https://confluence.atlassian.com/pages/viewpage.action?pageId=270827678) to github or bitbucket.
+After this, you can deploy your server without enter git account password.
+
 Deploy your code to your ubuntu server.
 ````bash
 $ ./deploy
