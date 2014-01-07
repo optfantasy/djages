@@ -3,7 +3,7 @@ from djages.configs.common.settings import *
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-MEDIA_URL = 'http://web_ip/'
+MEDIA_URL = 'http://web_ip/media/'
 
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'

@@ -88,7 +88,7 @@ def new_user(username, public_key_path):
 
 
 def install_packages():
-    command = 'sudo apt-get update;sudo apt-get -y install python-software-properties python g++ make git python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2 libapache2-mod-wsgi'
+    command = 'sudo apt-get update;sudo apt-get -y install python-software-properties python g++ make git python-pip python-virtualenv python-imaging build-essential python-dev libxml2-dev libxslt-dev python-lxml libssl-dev libpam0g-dev nginx apache2 libapache2-mod-wsgi libjpeg8-dev'
     run(command)
     if exists('/etc/nginx/sites-enabled/default'):
         run('sudo rm -r /etc/nginx/sites-enabled/default')
@@ -99,6 +99,11 @@ def install_packages():
 
     run('sudo a2enmod headers')
     run('sudo a2enmod expires')
+
+    # For PIL
+    run('sudo ln -s -f /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/')
+    run('sudo ln -s -f /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/')
+    run('sudo ln -s -f /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/')
 
 
 def install_mongodb():
@@ -123,6 +128,10 @@ def create_repo():
     if not exists('%(repo_path)s/%(project_name)s/configs/staging/jinja_cache' % env):
         run('mkdir -p %(repo_path)s/%(project_name)s/configs/staging/jinja_cache' % env)
     run('sudo chown -R www-data:www-data %(repo_path)s/%(project_name)s/configs/staging/jinja_cache' % env)
+    if not exists('%(repo_path)s/%(project_name)s/media' % env):
+        run('mkdir -p %(repo_path)s/%(project_name)s/media' % env)
+    run('sudo chown -R www-data:www-data %(repo_path)s/%(project_name)s/media' % env)
+
 
 def setup_vitrualenv():
     env.user = env.project_name

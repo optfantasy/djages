@@ -37,7 +37,7 @@ echo "cp nginx/apache configuration to site-enabled"
 cd /home/djages/site/djages/repository
 sudo cp djages/configs/staging/nginx /etc/nginx/sites-enabled/djages
 
-sudo cp djages/configs/staging/apache /etc/apache2/sites-enabled/djages
+sudo cp djages/configs/staging/apache /etc/apache2/sites-enabled/djages.conf
 sudo cp djages/configs/staging/ports.conf /etc/apache2/
 # sudo cp djages/configs/staging/proxy.conf /etc/nginx/proxy.conf
 

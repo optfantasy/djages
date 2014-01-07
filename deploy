@@ -11,10 +11,10 @@ fi
 WEBIP=YOUR_SERVER_IP_OR_DOAMIN
 MONGOIP=MONGO_DB_IP
 
-if [ "$WEBIP" == "YOUR_SERVER_IP_OR_DOAMIN" ] || [ "$MONGOIP" == "MONGO_DB_IP" ]; then
-    echo "Please specified your server ip and mongodb ip in deploy file."
-    exit
-fi
+# if [ "$WEBIP" == "YOUR_SERVER_IP_OR_DOAMIN" ] || [ "$MONGOIP" == "MONGO_DB_IP" ]; then
+#     echo "Please specified your server ip and mongodb ip in deploy file."
+#     exit
+# fi
 
 if [ "$1" == "init" ]; then
     username=$2
