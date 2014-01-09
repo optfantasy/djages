@@ -159,6 +159,7 @@ INSTALLED_APPS = (
     'globals',
     'user_profiles',
     'api',
+    'proto'
 )
 
 # A sample logging configuration. The only tangible logging

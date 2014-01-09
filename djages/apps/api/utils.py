@@ -1,4 +1,5 @@
 import time
+from collections import namedtuple
 
 from datetime import datetime
 from django.utils import simplejson
@@ -14,6 +15,18 @@ TOKEN_LENGTH = 20
 DEFAULT_RETURN_NUM = 20
 MAX_RETURN_NUM = 300
 
+SysRequest = namedtuple('SysRequest', ['user', 'CLEANED'])
+
+def create_sys_request(user, query_dict=None):
+    if not query_dict:
+        query_dict = QueryDict('', mutable=True)
+        query_dict['detail'] = True
+        query_dict['offset'], query_dict['limit'] = parse_pagination()
+        query_dict['endpoint'] = query_dict['offset'] + query_dict['limit']
+        query_dict['order_by'] = None
+        
+    sys_request = SysRequest(user=user, CLEANED=query_dict)
+    return sys_request
 
 def to_json(obj, **kwargs):
     obj = obj.get_profile() if obj.__class__==User else obj
