@@ -4,7 +4,11 @@ if [ "$1" == "" ]; then
     exit 1;
 fi
 
-project_name=$1
+# Conver to lowercase
+lower=$(echo "$1" | tr '[:upper:]' '[:lower:]') 
+# Replace Underscore
+clean=$(echo ${lower//_/})
+project_name="$clean"
 
 do_sed(){
     local file_name=$1
@@ -16,14 +20,14 @@ do_sed(){
     fi
 }
 
-mv ./djages $1
+mv ./djages "$project_name"
 
 do_sed ./manage
 do_sed ./fabfile.py
-do_sed ./$1/configs/common/common.wsgi
-do_sed ./$1/configs/common/settings.py
-do_sed ./$1/configs/staging/apache
-do_sed ./$1/configs/staging/nginx
-do_sed ./$1/configs/staging/staging.wsgi
-do_sed ./$1/configs/staging/settings.py
-do_sed ./$1/scripts/deploy.sh
+do_sed ./$project_name/configs/common/common.wsgi
+do_sed ./$project_name/configs/common/settings.py
+do_sed ./$project_name/configs/staging/apache
+do_sed ./$project_name/configs/staging/nginx
+do_sed ./$project_name/configs/staging/staging.wsgi
+do_sed ./$project_name/configs/staging/settings.py
+do_sed ./$project_name/scripts/deploy.sh

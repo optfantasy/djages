@@ -163,6 +163,7 @@ Commands - deployment
 
 def deploy_staging():
     print green("Performing a deployment to: %s" % env.hosts[0])
+    run('sudo chown %(project_name)s:%(project_name)s %(repo_path)s/%(project_name)s/media/.gitignore' % env)
     checkout_latest()
     command = '%(repo_path)s/djages/scripts/deploy.sh --web_ip %(web_ip)s --mongo_ips %(mongo_ips)s' % env
             
