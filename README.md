@@ -22,6 +22,7 @@ For PIL in ubuntu, you may need to do this.
 # sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
 ````
 
+
 Create a virtual enviroment for Djages.
 
 ````bash
@@ -34,7 +35,7 @@ and activate it
 $ source ./djagesenv/bin/activate
 ````
 
-or use mkvirtualenv if you have installed virtualenvwrapper
+or use mkvirtualenv if you have installed [virtualenvwrapper](https://gist.github.com/munhitsu/1034876)
 
 ````bash
 $ mkvirtualenv djagesenv
@@ -46,9 +47,6 @@ to deactivate virtualenv
 $ deactivate
 ````
 
-TODO:
-https://gist.github.com/munhitsu/1034876
-
 You may need to install [mongodb](http://www.mongodb.org/).
 Tutorial: [OS X](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/), [Ubuntu](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
 
@@ -57,6 +55,9 @@ Tutorial: [OS X](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x
 $ git clone https://github.com/optfantasy/djages
 $ cd djages
 $ pip install -r requirements.txt
+# If you encounter error when install PIL, the following command might help you:
+# $ pip install -U PIL --allow-external PIL --allow-unverified PIL
+# !! YOUR_APP_NAME should be all in lowercase without underscore or other special chars.
 $ ./startnewsite YOUR_APP_NAME
 $ ./manage runserver
 ````
