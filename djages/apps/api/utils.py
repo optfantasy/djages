@@ -169,7 +169,7 @@ def process_request(cls, request, *args, **kwargs):
         # POST parameters
 
         # For Json
-        if request.META['CONTENT_TYPE'] == "application/json":
+        if request.META.get('CONTENT_TYPE') == "application/json":
             json_dict = simplejson.loads(request.raw_post_data)
             for kwarg in cls.create_kwargs:
                 if json_dict.get(kwarg) == None and kwarg in cls.required_fields:
