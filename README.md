@@ -4,7 +4,7 @@ Djages is an app base on [django-nonrel](https://github.com/django-nonrel/django
 #### Requirement (for local dev)
 For Djages, all you need is python and a virtual environment. 
 On Mac, you can follow this [post](http://darklaunch.com/2011/11/24/osx-install-pip-virtualenv-virtualenvwrapper-on-mac).
-and execute following command for PIL:
+and execute following command for PIL (you may need [homebrew](http://brew.sh/) to execute brew install):
 ````bash
 $ brew install libjpeg
 ````
