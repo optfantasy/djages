@@ -68,7 +68,7 @@ def process_boolean(query_dict, process_fields=[]):
     # boolean is 'true', 'false' or None and will transform into True, False and None
     for field in process_fields:
         if query_dict.get(field) != None:
-            query_dict[field] = query_dict[field] in ('true', 'True', '1')
+            query_dict[field] = query_dict[field] in ('true', 'True', '1', True, 1)
 
 
 def process_list(query_dict, process_fields=[]):

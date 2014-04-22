@@ -99,6 +99,7 @@ class GlobalIndexHandler(GlobalBaseHandler):
 
         if 'custom_query' in request.CLEANED:
             query_set = request.CLEANED['custom_query']
+            del request.CLEANED['custom_query']
         elif self.about_privacy:
             query_set = self.query_model.viewables(user=request.user)
         else:
