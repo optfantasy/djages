@@ -104,7 +104,7 @@ Suppose you have an ubuntu server with IP/domain example.com.
 
 1) Edit file "deploy": change YOUR_SERVER_IP_OR_DOAMIN to "example.com" and MONGO_DB_IP to "localhost".
 
-2) [Generate a SSH key pair](https://help.github.com/articles/generating-ssh-keys) for your remote user. Remember the public key path, it will be used in next step.
+2) [Generate a SSH key pair](https://help.github.com/articles/generating-ssh-keys) at your local computer. Remember the public key path, it will be used in next step.
 ````bash
 $ ssh-keygen -t rsa -C "your_email@example.com"
 # Enter file in which to save the key (/Users/you/.ssh/id_rsa): YOUR_APP_NAME.pem [Press enter]
